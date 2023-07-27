@@ -11,8 +11,7 @@ chrome.webRequest.onCompleted.addListener(
         fetch(`${details.url}&jiangniao`)
           .then((response) => response.text())
           .then((data) => {
-            // 接口中数据，待处理
-            console.log(data);
+            chrome.storage.sync.set({ data });
           })
           .catch((error) => {
             console.error(error);
@@ -22,3 +21,4 @@ chrome.webRequest.onCompleted.addListener(
   { urls: ["<all_urls>"], types: ["xmlhttprequest"] },
   []
 );
+

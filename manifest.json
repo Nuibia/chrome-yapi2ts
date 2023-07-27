@@ -4,6 +4,10 @@
   "version": "1.0",
   "manifest_version": 3,  
   "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "clipboardWrite",
     "webRequest"
   ],
   "host_permissions":[
