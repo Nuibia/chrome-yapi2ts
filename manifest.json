@@ -1,27 +1,31 @@
 {
-    "name":"YapiToTs",
-    "description":"将yapi文档一键转换成ts定义",
-    "version":"1.0",
-    "manifest_version":3,
-    "background": {
-      "service_worker": "background/background.js"
-    },
-    "options_page": "options/options.html",
-    "permissions": ["storage", "activeTab", "scripting"],
-    "action": {
-      "default_popup": "popup/index.html",
-      "default_icon": {
-        "16": "images/icon.png",
-        "32": "images/icon.png",
-        "48": "images/icon.png",
-        "128": "images/icon.png"
-      }
-    },
-    "icons": {
+  "name": "YapiToTs",
+  "description": "将yapi文档一键转换成ts定义",
+  "version": "1.0",
+  "manifest_version": 3,  
+  "permissions": [
+    "webRequest"
+  ],
+  "host_permissions":[
+    "http://yapi.xiaomawang.com/*",
+    "https://yapi.xiaomawang.com/*"
+  ],
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_icon": {
       "16": "images/icon.png",
       "32": "images/icon.png",
       "48": "images/icon.png",
       "128": "images/icon.png"
     }
+  },
+  "icons": {
+    "16": "images/icon.png",
+    "32": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
   }
-  
+}
