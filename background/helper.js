@@ -4,6 +4,7 @@ const TypeObj = {
   string: "string",
   long: "number",
   number: "number",
+  integer:"number",
   boolean: "boolean",
 };
 
