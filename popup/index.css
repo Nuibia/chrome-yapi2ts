@@ -1,7 +1,45 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
 .popupContainer {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
+    box-sizing: border-box;
+    padding: 8px;
+    background-image: url('../images/icon.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.popupTitle {
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.optionsContainer {
+    width: 100%;
+    height: calc(100% - 32px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+button {
+    width: 80px;
+    background-color: #fff;
+    box-shadow: #fff;
+}
+
+button:first-child {
+    margin-bottom: 10px;
+}
+
+button:hover {
+    color: blue;
 }
