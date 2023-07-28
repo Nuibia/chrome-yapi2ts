@@ -8,6 +8,7 @@ const TypeObj = {
 };
 
 export const YApi2Ts = (data) => {
+  console.log("data", data);
   const {
     /** 接口名称 */
     title,
@@ -22,7 +23,6 @@ export const YApi2Ts = (data) => {
     /** query请求参数 */
     req_query,
   } = data;
-  console.log(data);
   return {
     // 请求参数
     queryParams: ReturnParams(req_query, path),
@@ -33,7 +33,7 @@ export const YApi2Ts = (data) => {
 };
 
 // 请求params
-const ReturnParams = (data) => {
+const ReturnParams = (data,path) => {
   if (data?.length) {
     let params = `export interface I${finallyCode(path)}Params {`;
     data.forEach((item) => {
