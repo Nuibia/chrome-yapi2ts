@@ -4,7 +4,7 @@ const TypeObj = {
   string: "string",
   long: "number",
   number: "number",
-  integer:"number",
+  integer: "number",
   boolean: "boolean",
 };
 
@@ -34,7 +34,7 @@ export const YApi2Ts = (data) => {
 };
 
 // 请求params
-const ReturnParams = (data,path) => {
+const ReturnParams = (data, path) => {
   if (data?.length) {
     let params = `export interface I${finallyCode(path)}Params {`;
     data.forEach((item) => {
