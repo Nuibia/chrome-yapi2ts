@@ -11,8 +11,7 @@
     "webRequest"
   ],
   "host_permissions":[
-    "http://yapi.xiaomawang.com/*",
-    "https://yapi.xiaomawang.com/*"
+    "<all_urls>"
   ],
   "background": {
     "service_worker": "background/background.js",
