@@ -19,6 +19,8 @@ export const YApi2Ts = (data) => {
     path,
     /** body请求参数 */
     req_body_form,
+    /** body请求参数 */
+    req_body_other,
     /** 返回数据-响应报文 */
     res_body,
     /** query请求参数 */
@@ -27,7 +29,10 @@ export const YApi2Ts = (data) => {
   return {
     // 请求参数
     queryParams: ReturnParams(req_query, path),
-    bodyParams: ReturnParams(req_body_form, path),
+    bodyParams: ReturnParams(
+      req_body_form.length > 0 ? req_body_form : req_body_other,
+      path
+    ),
     // 详情参数
     resultData: ReturnResult(res_body, path),
   };
@@ -35,17 +40,32 @@ export const YApi2Ts = (data) => {
 
 // 请求params
 const ReturnParams = (data, path) => {
-  if (data?.length) {
-    let params = `export interface I${finallyCode(path)}Params {`;
-    data.forEach((item) => {
-      params += `/** ${item.desc} */`;
-      params += `${item.name}`;
-      params += `${item.required === "0" ? "?" : ""}:`;
-      params += `${TypeObj?.[item.type] ?? "any"}`;
-      params += `;`;
-    });
-    params += `}`;
-    return replaceString(params);
+  console.log("data-return-params", data);
+  if (Array.isArray(data)) {
+    if (data?.length) {
+      let params = `export interface I${finallyCode(path)}Params {`;
+      data.forEach((item) => {
+        params += `/** ${item.desc} */`;
+        params += `${item.name}`;
+        params += `${item.required === "0" ? "?" : ""}:`;
+        params += `${TypeObj?.[item.type] ?? "any"}`;
+        params += `;`;
+      });
+      params += `}`;
+      return replaceString(params);
+    }
+  } else {
+    if (data) {
+      console.log("data", data);
+      const JsonData = JSON.parse(data).properties;
+      console.log(JsonData);
+      if (JsonData) {
+        let params = `export interface I${finallyCode(path)}Params {`;
+        params += formatObject(JsonData);
+        params += `}`;
+        return replaceString(params);
+      }
+    }
   }
 };
 // 响应result
