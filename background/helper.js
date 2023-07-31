@@ -51,9 +51,9 @@ const ReturnParams = (data, path) => {
 // 响应result
 const ReturnResult = (data, path) => {
   if (data) {
-    console.log('data',data)
+    console.log("data", data);
     const JsonData = JSON.parse(data).properties;
-    console.log(JsonData)
+    console.log(JsonData);
     if (JsonData) {
       let params = `export interface I${finallyCode(path)}Result {`;
       params += formatObject(JsonData);
@@ -89,7 +89,9 @@ const formatObject = (data) => {
           finallyCode += `${key}:${value.items.type}[]`;
         }
       } else {
-        finallyCode += `/** ${value?.description} */ `;
+        if (value?.description) {
+          finallyCode += `/** ${value?.description} */ `;
+        }
         finallyCode += `${key}:`;
         finallyCode += `${TypeObj?.[value?.type]};`;
       }
