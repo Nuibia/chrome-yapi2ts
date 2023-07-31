@@ -23,7 +23,8 @@ body {
 
 .optionsContainer {
     width: 100%;
-    height: calc(100% - 32px);
+    /* popupFooter 和title */
+    height: calc(100% - 32 - 30px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,4 +43,14 @@ button:first-child {
 
 button:hover {
     color: blue;
+}
+
+.popupFooter {
+    background-color: #fff;
+    margin-top: 12px;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
