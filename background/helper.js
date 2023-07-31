@@ -51,7 +51,9 @@ const ReturnParams = (data, path) => {
 // 响应result
 const ReturnResult = (data, path) => {
   if (data) {
-    const JsonData = JSON.parse(data).properties.data.properties;
+    console.log('data',data)
+    const JsonData = JSON.parse(data).properties;
+    console.log(JsonData)
     if (JsonData) {
       let params = `export interface I${finallyCode(path)}Result {`;
       params += formatObject(JsonData);
