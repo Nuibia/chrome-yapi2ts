@@ -6,10 +6,11 @@ const TypeObj = {
   number: "number",
   integer: "number",
   boolean: "boolean",
+  null:'null'
 };
 
 export const YApi2Ts = (data) => {
-  console.log("data", data);
+  console.log("YApi2TsData", data);
   const {
     /** 接口名称 */
     title,
@@ -56,7 +57,7 @@ const ReturnParams = (data, path) => {
     }
   } else {
     if (data) {
-      console.log("data", data);
+      console.log("ReturnParamsElse", data);
       const JsonData = JSON.parse(data).properties;
       console.log(JsonData);
       if (JsonData) {
@@ -71,7 +72,7 @@ const ReturnParams = (data, path) => {
 // 响应result
 const ReturnResult = (data, path) => {
   if (data) {
-    console.log("data", data);
+    console.log("ReturnResult", data);
     const JsonData = JSON.parse(data).properties;
     console.log(JsonData);
     if (JsonData) {
@@ -106,6 +107,9 @@ const formatObject = (data) => {
           finallyCode += `${formatObject(value?.items?.properties)}`;
           finallyCode += `}[]`;
         } else {
+          if (value?.description) {
+            finallyCode += `/** ${value?.description} */ `;
+          }
           finallyCode += `${key}:${value.items.type}[]`;
         }
       } else {
