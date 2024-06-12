@@ -4,6 +4,9 @@
 ## 使用
 [chrome-yapi2Ts](https://xiaomawang.feishu.cn/docx/YvEkdmJNGoIPUcxGobocWazRnKe)
 
+##  相关工具推荐
+[quicktype](https://app.quicktype.io/)
+
 ## TODO
 ### 功能方面
 [] query请求参数支持注释
