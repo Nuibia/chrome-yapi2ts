@@ -13,7 +13,7 @@ chrome.webRequest.onCompleted.addListener(
         .then((response) => response.json())
         .then((response) => {
           console.log("response", response);
-          const res = YApi2Ts(response?.data);
+          const res = YApi2Ts(response?.data,details.url);
           console.log("res", res);
           chrome.storage.sync.set({ result: res });
         })

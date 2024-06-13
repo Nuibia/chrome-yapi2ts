@@ -9,7 +9,7 @@ const TypeObj = {
   null:'null'
 };
 
-export const YApi2Ts = (data) => {
+export const YApi2Ts = (data,url) => {
   console.log("YApi2TsData", data);
   const {
     /** 接口名称 */
@@ -28,6 +28,7 @@ export const YApi2Ts = (data) => {
     req_query,
   } = data;
   return {
+    requestDesc: ReturnRequestDesc({title,username,path:url}),
     // 请求参数
     queryParams: ReturnParams(req_query, path),
     bodyParams: ReturnParams(
@@ -38,6 +39,16 @@ export const YApi2Ts = (data) => {
     resultData: ReturnResult(res_body, path),
   };
 };
+
+const ReturnRequestDesc = ({ title, username, path }) => { 
+  return `
+  /**
+   * @name ${title}
+   * @author ${username}
+   * @link ${path}
+   */
+  `;
+}
 
 // 请求params
 const ReturnParams = (data, path) => {
